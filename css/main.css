@@ -108,7 +108,8 @@ html {
 }
 
 #hero-content #authors .author-item {
-    display: inline-block;
+    display: inline-flex;
+    align-items: baseline;
     white-space: nowrap;
 }
 
@@ -122,12 +123,8 @@ html {
 }
 
 #hero-content #authors sup {
-    font-size: 0.62em;
-    line-height: 0;
+    font-size: 16px;
     margin-left: 2px;
-    position: relative;
-    top: -0.85em;
-    vertical-align: baseline;
 }
 
 #hero-content #institution {
@@ -442,7 +439,8 @@ video {
 }
 
 #authors .author-item {
-    display: inline-block;
+    display: inline-flex;
+    align-items: baseline;
     white-space: nowrap;
 }
 
