@@ -1,0 +1,133 @@
+/* Dual-panel showcase — width aligned with .cmp-pano-carousel (see index.html) */
+
+#panorama-showcase-carousel .x-carousel-slider,
+#panorama-showcase-carousel .x-carousel-nav,
+#orbit-compare-carousel .x-carousel-slider,
+#orbit-compare-carousel .x-carousel-nav {
+    max-width: 100%;
+}
+
+.showcase-dual-card {
+    width: 100%;
+    max-width: none;
+    margin: 8px 0;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.showcase-dual-card.x-card {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.cmp-showcase-footnote {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.showcase-dual-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+}
+
+.showcase-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+/* Panoramic Performance: wide ERP left, narrower cubemap right, equal image height */
+.showcase-dual-row--panorama-perf .showcase-panel--erp {
+    flex: 1 1 68%;
+}
+
+.showcase-dual-row--panorama-perf .showcase-panel--cube {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.showcase-dual-row--orbit .showcase-panel--half {
+    flex: 1 1 50%;
+}
+
+.showcase-panel-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+/* Fixed display height so left/right images align, not just the boxes */
+.showcase-panel-media--synced {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 380px;
+    box-sizing: border-box;
+}
+
+.showcase-panel-media--synced img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.showcase-caption-card {
+    width: 100%;
+    max-width: none;
+    margin: 8px auto 24px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.55;
+    text-align: left;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(101, 103, 201, 0.08), rgba(255, 147, 73, 0.06));
+    border: 1px solid rgba(101, 103, 201, 0.2);
+}
+
+.showcase-caption-card strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 17px;
+}
+
+@media (max-width: 768px) {
+    .showcase-dual-row--panorama-perf {
+        flex-direction: column;
+    }
+
+    .showcase-dual-row--panorama-perf .showcase-panel--cube {
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+
+    .showcase-dual-row--orbit {
+        flex-direction: column;
+    }
+
+    .showcase-panel-media--synced {
+        height: 260px;
+    }
+}

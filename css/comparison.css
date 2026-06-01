@@ -1,0 +1,269 @@
+/* Dynamic comparison — unified 2D split (baseline | ours / GT) */
+
+.cmp-global-tabs {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.cmp-method-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cmp-method-tab {
+    padding: 8px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+    background: #f0f0f5;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.cmp-method-tab:hover {
+    color: #6567C9;
+    background: #e8e8f8;
+}
+
+.cmp-method-tab.active {
+    color: #fff;
+    background: linear-gradient(107.54deg, #0078d4 .39%, #8661c5 51.23%, #ff9349 100%) fixed;
+    box-shadow: 0 2px 8px rgba(101, 103, 201, 0.35);
+}
+
+.cmp-widget {
+    width: 100%;
+}
+
+.cmp-unified {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    background: #000;
+    cursor: crosshair;
+    touch-action: none;
+    --h-split: 50%;
+    --v-split: 50%;
+}
+
+.cmp-pers-grid .cmp-unified {
+    aspect-ratio: 16 / 9;
+}
+
+.cmp-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.cmp-layer img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.cmp-layer-baseline {
+    z-index: 3;
+}
+
+.cmp-layer-ours {
+    z-index: 2;
+}
+
+.cmp-layer-gt {
+    z-index: 1;
+}
+
+.cmp-label {
+    position: absolute;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.58);
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 15;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.cmp-label-baseline {
+    top: 10px;
+    left: 10px;
+}
+
+.cmp-label-ours {
+    top: 10px;
+    right: 10px;
+}
+
+.cmp-label-gt {
+    bottom: 10px;
+    left: 10px;
+}
+
+/* Split guides */
+.cmp-guide-v {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--v-split);
+    height: 2px;
+    margin-top: -1px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
+    z-index: 12;
+    pointer-events: none;
+}
+
+.cmp-guide-h {
+    position: absolute;
+    left: var(--h-split);
+    top: 0;
+    width: 2px;
+    margin-left: -1px;
+    height: var(--v-split);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
+    z-index: 12;
+    pointer-events: none;
+}
+
+.cmp-crosshair {
+    position: absolute;
+    left: var(--h-split);
+    top: var(--v-split);
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px;
+    border-radius: 50%;
+    border: 2px solid #6567C9;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    z-index: 14;
+    pointer-events: none;
+}
+
+.cmp-crosshair::after {
+    content: "+";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #6567C9;
+    line-height: 1;
+}
+
+/* Perspective 2×2 */
+.cmp-pers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+/* Panoramic carousel */
+.cmp-pano-carousel {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.cmp-pano-track {
+    position: relative;
+    width: 100%;
+}
+
+.cmp-pano-slide {
+    display: none;
+    width: 100%;
+}
+
+.cmp-pano-slide.active {
+    display: block;
+}
+
+.cmp-pano-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.cmp-pano-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(107.54deg, #0078d4 .39%, #8661c5 51.23%, #ff9349 100%) fixed;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(101, 103, 201, 0.4);
+    transition: transform 0.15s ease;
+}
+
+.cmp-pano-btn:hover {
+    transform: scale(1.08);
+}
+
+.cmp-pano-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.cmp-pano-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.cmp-pano-dot.active {
+    background: #6567C9;
+    transform: scale(1.2);
+}
+
+.cmp-pano-counter {
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    min-width: 48px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .cmp-pers-grid {
+        grid-template-columns: 1fr;
+    }
+}

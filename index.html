@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Depth Any Panoramas: A Foundation Model for Panoramic Depth Estimation</title>
+        <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css">
+        <link rel="stylesheet" href="fonts/segoe-print/stylesheet.css">
+        <link rel="stylesheet" href="css/carousel.css">
+        <link rel="stylesheet" href="icons/style.css">
+        <link rel="stylesheet" href="css/selection_panel.css">
+        <link rel="stylesheet" href="css/main.css?v=20260601">
+        <link rel="stylesheet" href="css/comparison.css?v=20260530">
+        <link rel="stylesheet" href="css/showcase.css?v=20260531c">
+        <script src="js/carousel.js"></script>
+        <script src="js/selection_panel.js"></script>
+        <script src="js/generation.js"></script>
+        <script src="js/application.js"></script>
+        <script src="js/comparison.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <!-- 全屏视频背景英雄区 -->
+        <div id="hero-section">
+            <!-- 视频背景 -->
+            <video id="hero-video" autoplay muted playsinline loop>
+                <source src="assets/teaser8.mp4" type="video/mp4">
+            </video>
+            
+            <!-- 半透明遮罩层 -->
+            <div id="hero-overlay"></div>
+            
+            <!-- 标题内容 -->
+            <div id="hero-content">
+                <div style="text-align: center; font-family: Arial, sans-serif; width: 100%; overflow-x: hidden;">
+                    <!-- 大标题 -->
+                    <div style="
+                        font-size: 90px;
+                        font-weight: bold;
+                        color: #ffffff;
+                        margin-bottom: 25px;
+                        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+                        max-width: 100%;
+                    ">
+                        UniSHARP
+                    </div>
+
+                    <!-- 副标题 -->
+                    <div style="
+                        font-size: 50px;
+                        color: #f0f0f0;
+                        line-height: 1.4;
+                        text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+                        margin-bottom: 15px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
+                        max-width: 100%;
+                    ">
+                        Universal Sharp Monocular View Synthesis
+                    </div>
+                </div>
+
+                <div id="authors">
+                    <span class="author-item"><a class="link" href="">Meixi Song</a><sup>1</sup></span>
+                    <span class="author-item"><a class="link" href="">Dizhe Zhang</a><sup>1</sup></span>
+                    <span class="author-item"><a class="link" href="">Hao Ren</a><sup>1</sup></span>
+                    <span class="author-item"><a class="link" href="">Ruiyang Zhang</a><sup>1</sup></span>
+                    <span class="author-item"><a class="link" href="">Bo Du</a><sup>2</sup></span>
+                    <span class="author-item"><a class="link" href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>3</sup></span>
+                    <span class="author-item"><a class="link" href="https://scholar.google.com.hk/citations?user=SSI90d4AAAAJ&hl=en&oi=ao">Lu Qi</a><sup>1,2,*</sup></span>
+                </div>
+                <div id="institution">
+                    <div><sup>1</sup><a class="link" href="https://www.insta360.com/cn/">Insta360 Research</a></div>
+                    <div><sup>2</sup><a class="link" href="https://admission.whu.edu.cn/">Wuhan University</a></div>
+                    <div><sup>3</sup><a class="link" href="https://www.ucmerced.edu/">University of California, Merced</a></div>
+                </div>
+                <div id="links">
+                    <div><a id="arxiv" href="https://www.insta360.com/cn/">Arxiv</a></div>
+                    <div><a id="code" href="https://www.insta360.com/cn/">Code</a></div>
+                    <div>
+                      <a id="paper" href="assets/paper.pdf" target="_blank">
+                        Paper
+                      </a>
+                    </div>                    
+                    <div><a id="demo" href="https://huggingface.co/spaces/Insta360-Research/UniSHARP">Demo</a></div>
+                    <div><a id="dataset" href="https://huggingface.co/datasets/Insta360-Research/OmniRooms">Dataset</a></div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="main">
+            <div id="teaser">
+                <div style="width: 100%;"><img src="assets/website_13.png" alt="Depth Teaser" style="width: 100%; height: auto;"></div>
+                <div class="teaser-caption">
+                    <strong>UniSHARP performs monocular novel view synthesis across diverse camera types.</strong>
+                    Given a single image from a perspective, wide-FoV, fisheye, or panoramic camera, UniSHARP predicts a 3D Gaussian point cloud and renders high-quality novel views.
+                </div>
+            </div>
+
+            <!-- Panorama effect showcase -->
+            <div class="x-section-title">
+                <div class="x-gradient-font">Panoramic Performance</div>
+            </div>
+            <div id="panorama-showcase-carousel" class="cmp-pano-carousel"></div>
+
+            <!-- Dynamic Comparison -->
+            <div class="x-section-title">
+                <div class="x-gradient-font">Dynamic Comparison</div>
+            </div>
+
+            <div class="x-section-title small">
+                <div><span class="x-gradient-font">Panoramic Camera</span></div>
+            </div>
+            <div id="pano-method-tabs" class="cmp-method-tabs cmp-global-tabs"></div>
+            <div id="pano-comparison" class="cmp-pano-carousel"></div>
+
+            <div class="x-section-title small">
+                <div><span class="x-gradient-font">Perspective Camera</span></div>
+            </div>
+            <div id="pers-method-tabs" class="cmp-method-tabs cmp-global-tabs"></div>
+            <div id="pers-comparison-grid" class="cmp-pers-grid"></div>
+
+            <div class="x-section-title small">
+                <div><span class="x-gradient-font">UniSHARP vs. SHARP — Orbit Panorama</span></div>
+            </div>
+            <div id="orbit-compare-carousel" class="cmp-pano-carousel"></div>
+            <div class="showcase-caption-card x-card cmp-showcase-footnote">
+                <strong>UniSHARP vs. SHARP on orbit panoramas.</strong>
+                For SHARP, we run inference on each of the six cubemap faces separately and stitch the outputs into one equirectangular panorama; visible stitching seams remain.
+            </div>
+
+            <div class="x-section-title"><div class="x-gradient-font">Qualitative Evaluation</div></div>
+
+            <div class="x-section-title small">
+                <div>Comparison On <span class="x-gradient-font">Perspective Camera</span></div>
+            </div>
+            <div id="outdoor-carousel"></div>
+
+            <div class="x-section-title small">
+                <div>Comparison On <span class="x-gradient-font">Panoramic Camera</span></div>
+            </div>
+            <div id="indoor-carousel"></div>
+
+            <div class="x-section-title small">
+                <div>Comparison On <span class="x-gradient-font">Fisheye Camera</span></div>
+            </div>
+            <div id="details-carousel"></div>
+
+            <div id="abstract" class="x-gradient-block">
+                In this work, we focus on extending SHARP, the popular photorealistic view synthesis method, for universal monocular rendering across diverse camera systems, such as large-field-of-view fisheye lenses. To overcome the pinhole-specific assumptions of SHARP, our key idea is to align various images in a unified omnidirectional latent space. Thus, we propose UniSHARP, which performs implicit alignment in both feature and Gaussian spaces. Specifically, 2D semantic embeddings and 3D spatial features are jointly encoded and decoded by UniK3D to support Gaussian construction, while a ray-based universal representation organizes Gaussian primitives along rays and radial distances. To comprehensively evaluate our method, we construct a benchmark covering diverse imaging systems, including pinhole, fisheye and panoramic cameras, across various scenes. The benchmark is further stratified by field of view, spanning narrow perspective, wide-FoV, fisheye, and full panoramic settings. Extensive experiments on the proposed benchmark demonstrate the effectiveness of UniSHARP, outperforming alternative methods by a large margin. 
+            </div>
+
+
+            <div class="x-section-title">
+                <div class="x-gradient-font">Methodology <span style="font-size: 40px; font-weight:600;"></span> </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center; margin: 20px 0;">
+                <div class="x-card" style="width: 100%; max-width: 1200px; margin: 10px auto;">
+                    <div style="width: 100%; text-align: center;">
+                        <img src="assets/website_14.png" alt="" style="width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                    <div style="
+                        width: 100%;
+                        font-size: 18px;
+                        margin-top: 10px;
+                        line-height: 1.55;
+                        text-align: left;
+                    ">
+                        <strong>UniSHARP pipeline for universal-camera monocular novel view synthesis.</strong>
+                        Given a single source image, UniSHARP estimates ray-distance geometry and multi-scale features, initializes two-layer Gaussians in ray-distance space, predicts Feature Conditioned Gaussian residuals, and renders target views with the unified Gaussian representation across perspective, wide-FoV, fisheye, and panoramic cameras.
+                    </div>
+                </div>
+            </div>
+
+            <div class="x-section-title"><div class="x-gradient-font">Benchmark <span style="font-size: 40px; font-weight:600;"></span></div></div>
+            <div style="display: flex; justify-content: center; margin: 20px 0;">
+                <div class="x-card" style="width: 100%; max-width: 1200px; margin: 10px auto;">
+                    <div style="width: 100%; text-align: center;">
+                        <img src="assets/NIPS2026_new_01.png" alt="" style="width: 80%; height: auto; border-radius: 8px;">
+                    </div>
+                    <div style="
+                        width: 100%;
+                        font-size: 18px;
+                        margin-top: 10px;
+                        line-height: 1.55;
+                        text-align: left;
+                    ">
+                        Composition of the proposed field-of-view stratified benchmark for universal-camera monocular novel view synthesis. Validation pairs are grouped by effective FoV and projection type, and sample counts denote evaluated source-target pairs.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="x-section-title small">
+                <div><span class="x-gradient-font">OmniRooms</span></div>
+            </div>
+            <div class="teaser-caption">
+                OmniRooms is a panoramic simulation indoor dataset highly suitable for 3DGS tasks. It consists of 20 large indoor scenes (each containing multiple rooms), X RGB images, covering both small and large pose movements, along with corresponding depth information.
+                It is collected via AirSim, with OmniRooms-Wide derived by projecting these panoramas into 130&deg; equidistant fisheye views. For each anchor point on a 0.5 m voxel grid, we render one central camera and 29 others randomly sampled within a 0.3 m-radius sphere. To isolate translation-induced synthesis, all cameras share a fixed orientation. Each frame is rendered as a 1024 &times; 2048 ERP image.
+            </div>
+
+            <div class="x-section-title small">
+                <div><span class="x-gradient-font">Details</span></div>
+            </div>
+            <div class="teaser-caption">
+                <strong>Evaluation protocol for single-source monocular NVS.</strong>
+                We restrict target views to locally reachable positions: source&ndash;target overlap &gt; 60%, camera-center distance &lt; 0.5 m, and image-index gap &lt; 10.
+                This focuses evaluation on geometry and disocclusion under meaningful motion rather than unconstrained long-range hallucination.
+                The protocol is a unified testbed for universal-camera NVS, measuring how rendering quality scales across perspective, wide-FoV, fisheye, and 360&deg; projections.
+                We use a single-source, multi-target setting&mdash;the first frame of each sequence as the source and the next ten frames as targets&mdash;and report PSNR, SSIM, and LPIPS averaged over all valid target views.
+            </div>
+
+
+
+            <!-- Citation -->
+          <section>
+            <h2>Citation</h2>
+        <pre>
+        @article{song2026unisharp,
+          title={UniSHARP: Universal Sharp Monocular View Synthesis},
+          author={Song, Meixi and Zhang, Dizhe and Ren, Hao and Zhang, Ruiyang and Du, Bo and Yang, Ming-Hsuan and Qi, Lu},
+          journal={arXiv},
+          year={2026}
+        }
+        </pre>
+          </section>
+            
+            <div id="results-imr-selection"></div>
+
+        </div>
+        <div id="bottombar">
+            <div class="row">
+                <div style="text-align: center; width: 100%;"><span style="font-size: 18px; font-weight: 500;">UniSHARP: Universal Sharp Monocular View Synthesis</span></div>
+            </div>
+        </div>
+    </body>
+</html>
