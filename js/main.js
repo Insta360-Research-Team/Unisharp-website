@@ -7,6 +7,7 @@ window.onload = function() {
         ['outdoor-carousel', typeof outdoor_items !== 'undefined' ? outdoor_items : [], typeof carousel_item_template !== 'undefined' ? carousel_item_template : null],
         ['indoor-carousel', typeof indoor_items !== 'undefined' ? indoor_items : [], typeof carousel_item_template !== 'undefined' ? carousel_item_template : null],
         ['details-carousel', typeof details_items !== 'undefined' ? details_items : [], typeof carousel_item_template !== 'undefined' ? carousel_item_template : null],
+        ['omnirooms-scenes-carousel', typeof omnirooms_scenes_items !== 'undefined' ? omnirooms_scenes_items : [], typeof omnirooms_scene_template !== 'undefined' ? omnirooms_scene_template : null],
     ];
 
     carousels.forEach(([id, items, template]) => {
