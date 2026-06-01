@@ -69,6 +69,36 @@ var orbit_compare_items = [
     { ours: "AI_vol3_01_last_orbit_erp.gif", sharp: "AI_vol3_01_last.gif" },
 ];
 
+// OmniRooms dataset preview: 16 scene overview grids (2x2)
+var omnirooms_scenes_items = [
+    { image: "dataset/AIUE5_vol8_03_2x2.jpg" },
+    { image: "dataset/AIUE5_vol8_04_2x2.jpg" },
+    { image: "dataset/AIUE5_vol8_05_2x2.jpg" },
+    { image: "dataset/AIUE_V01_001_2x2.jpg" },
+    { image: "dataset/AIUE_V01_003_2x2.jpg" },
+    { image: "dataset/AIUE_V01_004_2x2.jpg" },
+    { image: "dataset/AIUE_V02_001_2x2.jpg" },
+    { image: "dataset/AI_vol3_01_2x2.jpg" },
+    { image: "dataset/AI_vol3_02_2x2.jpg" },
+    { image: "dataset/AI_vol3_03_2x2.jpg" },
+    { image: "dataset/AI_vol3_04_2x2.jpg" },
+    { image: "dataset/AI_vol4_01_2x2.jpg" },
+    { image: "dataset/AI_vol4_02_2x2.jpg" },
+    { image: "dataset/AI_vol4_03_2x2.jpg" },
+    { image: "dataset/AI_vol4_04_2x2.jpg" },
+    { image: "dataset/AI_vol4_05_2x2.jpg" },
+];
+
+function omnirooms_scene_template(item, info) {
+    return `
+        <div class="x-card dataset-scene-card">
+            <div class="dataset-scene-media">
+                <img src="assets/${item.image}" alt="OmniRooms scene" loading="lazy">
+            </div>
+        </div>
+    `;
+}
+
 function carousel_item_template(item, info) {
     return `
         <div class="x-card" style="min-width: 300px; max-width: 900px; margin: 10px auto;">
