@@ -29,6 +29,15 @@ a.link:focus, a.link:hover {
     text-decoration: none;
 }
 
+:root {
+    --spacing-block: 64px;
+    --spacing-section-top: 88px;
+    --spacing-section-bottom: 48px;
+    --spacing-subsection-top: 56px;
+    --spacing-subsection-bottom: 40px;
+    --spacing-after-content: 80px;
+}
+
 body {
     position: relative;
     margin: 0px;
@@ -320,7 +329,7 @@ video {
 }
 
 .x-section-title {
-    margin: 64px 0px 16px 0px;
+    margin: var(--spacing-section-top) 0 var(--spacing-section-bottom);
     padding-left: 16px;
     color: black;
     font-size: 32px;
@@ -331,13 +340,99 @@ video {
 }
 
 .x-section-title.small {
-    margin: 32px 0px 12px 0px;
+    margin: var(--spacing-subsection-top) 0 var(--spacing-subsection-bottom);
     padding-left: 0px;
     font-size: 28px;
     font-weight: 700;
     color: #333;
     text-align: center;
     justify-content: center;
+}
+
+.x-section-title.small.omnirooms-subtitle {
+    margin-top: 48px;
+    margin-bottom: 28px;
+    color: #000;
+}
+
+/* Extra space when a subsection title follows a carousel / comparison block */
+#main > .cmp-pano-carousel + .x-section-title.small,
+#main > .cmp-pers-grid + .x-section-title.small,
+#main > .cmp-global-tabs + .x-section-title.small,
+#main > [id$="-carousel"] + .x-section-title.small,
+#main > .showcase-caption-card + .x-section-title.small,
+#main > .teaser-caption + .x-section-title.small,
+#main > .main-figure-wrap + .x-section-title.small,
+#main > #abstract + .x-section-title.small,
+.x-section-title + .x-section-title.small {
+    margin-top: var(--spacing-after-content);
+}
+
+/* Pull selected section titles closer to content above */
+#teaser + #title-panoramic-performance {
+    margin-top: 6px;
+}
+
+#title-panoramic-camera {
+    margin-top: 4px;
+}
+
+#teaser + .x-section-title.section-title-compact-top,
+.x-section-title.section-title-compact-top:not(.small) {
+    margin-top: 28px;
+}
+
+.x-section-title.small.section-title-compact-top,
+.x-section-title + .x-section-title.small.section-title-compact-top,
+#main > .cmp-pano-carousel + .x-section-title.small.section-title-compact-top,
+#main > [id$="-carousel"] + .x-section-title.small.section-title-compact-top,
+#main > .main-figure-wrap + .x-section-title.small.section-title-compact-top,
+#main > .teaser-caption + .x-section-title.small.section-title-compact-top,
+.x-section-title + .x-section-title.small.section-title-compact-top {
+    margin-top: 24px;
+}
+
+#details-carousel + #abstract {
+    margin-top: calc(var(--spacing-block) + 56px);
+}
+
+.dataset-scene-card,
+.dataset-one-group-card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 16px auto var(--spacing-block);
+}
+
+.dataset-scene-media,
+.dataset-one-group-media {
+    width: 100%;
+    text-align: center;
+}
+
+.dataset-scene-media img,
+.dataset-one-group-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#omnirooms-scenes-carousel {
+    margin-bottom: var(--spacing-block);
+}
+
+#main > [id$="-carousel"],
+#main > .cmp-pano-carousel,
+#main > .cmp-pers-grid,
+#main > .cmp-global-tabs,
+#main > .showcase-caption-card,
+#main > .main-figure-wrap {
+    margin-bottom: var(--spacing-block);
+}
+
+#main > section {
+    margin-top: var(--spacing-section-top);
+    margin-bottom: var(--spacing-block);
 }
 
 .x-note {
@@ -399,8 +494,20 @@ video {
 #main {
     max-width: 1100px;
     margin: 0px auto;
-    padding-top: 50px;
+    padding-top: 36px;
     padding-bottom: 200px;
+}
+
+.main-figure-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0 var(--spacing-block);
+}
+
+.main-figure-wrap > .x-card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 16px auto;
 }
 
 #logo {
@@ -477,7 +584,7 @@ video {
 
 #abstract {
     position: relative;
-    margin: 32px;
+    margin: var(--spacing-block) 32px;
     padding: 16px 24px;
     color: #3f3f3f;
     font-size: 16px;
@@ -594,7 +701,8 @@ video {
 }
 
 #teaser {
-    margin-top: 32px;
+    margin-top: 8px;
+    margin-bottom: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -627,7 +735,8 @@ video {
 }
 
 .teaser-caption {
-    margin-top: 20px;
+    margin-top: 12px;
+    margin-bottom: 0;
     padding: 16px 24px;
     font-size: 16px;
     font-weight: 400;
@@ -639,9 +748,21 @@ video {
     border-left: 4px solid #6567C9;
 }
 
-.teaser-caption strong {
+.teaser-caption > strong:first-of-type {
     display: block;
     margin-bottom: 8px;
+}
+
+.teaser-caption .caption-emphasis {
+    display: inline;
+    font-family: 'Avenir Next Cyr', 'Avenir', sans-serif;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.teaser-caption .nowrap-phrase {
+    display: inline;
+    white-space: nowrap;
 }
 
 
