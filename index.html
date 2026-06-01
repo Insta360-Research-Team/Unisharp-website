@@ -103,7 +103,7 @@
             </div>
 
             <!-- Panorama effect showcase -->
-            <div class="x-section-title">
+            <div id="title-panoramic-performance" class="x-section-title section-title-compact-top">
                 <div class="x-gradient-font">Panoramic Performance</div>
             </div>
             <div id="panorama-showcase-carousel" class="cmp-pano-carousel"></div>
@@ -113,7 +113,7 @@
                 <div class="x-gradient-font">Dynamic Comparison</div>
             </div>
 
-            <div class="x-section-title small">
+            <div id="title-panoramic-camera" class="x-section-title small section-title-compact-top">
                 <div><span class="x-gradient-font">Panoramic Camera</span></div>
             </div>
             <div id="pano-method-tabs" class="cmp-method-tabs cmp-global-tabs"></div>
@@ -136,7 +136,7 @@
 
             <div class="x-section-title"><div class="x-gradient-font">Qualitative Evaluation</div></div>
 
-            <div class="x-section-title small">
+            <div class="x-section-title small section-title-compact-top">
                 <div>Comparison On <span class="x-gradient-font">Perspective Camera</span></div>
             </div>
             <div id="outdoor-carousel"></div>
@@ -160,8 +160,8 @@
                 <div class="x-gradient-font">Methodology <span style="font-size: 40px; font-weight:600;"></span> </div>
             </div>
             
-            <div style="display: flex; justify-content: center; margin: 20px 0;">
-                <div class="x-card" style="width: 100%; max-width: 1200px; margin: 10px auto;">
+            <div class="main-figure-wrap">
+                <div class="x-card">
                     <div style="width: 100%; text-align: center;">
                         <img src="assets/website_14.png" alt="" style="width: 100%; height: auto; border-radius: 8px;">
                     </div>
@@ -178,9 +178,9 @@
                 </div>
             </div>
 
-            <div class="x-section-title"><div class="x-gradient-font">Benchmark <span style="font-size: 40px; font-weight:600;"></span></div></div>
-            <div style="display: flex; justify-content: center; margin: 20px 0;">
-                <div class="x-card" style="width: 100%; max-width: 1200px; margin: 10px auto;">
+            <div class="x-section-title"><div class="x-gradient-font">Benchmark and Dataset <span style="font-size: 40px; font-weight:600;"></span></div></div>
+            <div class="main-figure-wrap">
+                <div class="x-card">
                     <div style="width: 100%; text-align: center;">
                         <img src="assets/NIPS2026_new_01.png" alt="" style="width: 80%; height: auto; border-radius: 8px;">
                     </div>
@@ -195,16 +195,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="x-section-title small">
-                <div><span class="x-gradient-font">OmniRooms</span></div>
-            </div>
-            <div class="teaser-caption">
-                OmniRooms is a panoramic simulation indoor dataset highly suitable for 3DGS tasks. It consists of 20 large indoor scenes (each containing multiple rooms), X RGB images, covering both small and large pose movements, along with corresponding depth information.
-                It is collected via AirSim, with OmniRooms-Wide derived by projecting these panoramas into 130&deg; equidistant fisheye views. For each anchor point on a 0.5 m voxel grid, we render one central camera and 29 others randomly sampled within a 0.3 m-radius sphere. To isolate translation-induced synthesis, all cameras share a fixed orientation. Each frame is rendered as a 1024 &times; 2048 ERP image.
-            </div>
 
-            <div class="x-section-title small">
+            <div class="x-section-title small section-title-compact-top">
                 <div><span class="x-gradient-font">Details</span></div>
             </div>
             <div class="teaser-caption">
@@ -214,7 +206,29 @@
                 The protocol is a unified testbed for universal-camera NVS, measuring how rendering quality scales across perspective, wide-FoV, fisheye, and 360&deg; projections.
                 We use a single-source, multi-target setting&mdash;the first frame of each sequence as the source and the next ten frames as targets&mdash;and report PSNR, SSIM, and LPIPS averaged over all valid target views.
             </div>
+            
+            <div class="x-section-title small section-title-compact-top">
+                <div><span class="x-gradient-font">OmniRooms</span></div>
+            </div>
+            <div class="teaser-caption">
+                <strong>OmniRooms is a panoramic simulation dataset highly suitable for 3D reconstruction, especially for 3DGS tasks.</strong>
+                It consists of 16 large indoor scenes (each containing multiple rooms),&nbsp;<span class="nowrap-phrase"><span class="caption-emphasis">300k</span> RGB images</span>, covering both small and large pose movements, along with corresponding depth information.
+                OmniRooms is collected via AirSim, with OmniRooms-Wide derived by projecting these panoramas into 130&deg; equidistant fisheye views. For each anchor point on a 0.5 m voxel grid, we render one central camera and 29 others randomly sampled within a 0.3 m-radius sphere. To isolate translation-induced synthesis, all cameras share a fixed orientation. Each frame is rendered as a 1024 &times; 2048 ERP image.
+            </div>
 
+            <div class="x-section-title small omnirooms-subtitle">
+                <div>16 Scenes (Example)</div>
+            </div>
+            <div id="omnirooms-scenes-carousel"></div>
+
+            <div class="x-section-title small omnirooms-subtitle">
+                <div>One Group (30 Images)</div>
+            </div>
+            <div class="x-card dataset-one-group-card">
+                <div class="dataset-one-group-media">
+                    <img src="assets/dataset/AIUE5_vol8_04_8670_8699_6x5.jpg" alt="OmniRooms one group sample" loading="lazy">
+                </div>
+            </div>
 
 
             <!-- Citation -->
