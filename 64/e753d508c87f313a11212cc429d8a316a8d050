@@ -1,0 +1,58 @@
+css/main.css
+  80f0781738e9bc7e 103,106-107,110,112,125-130,437,440-444,446
+css/showcase.css
+  80f0781738e9bc7e 1-86,88-133
+  8173e3f899acfb7b 87
+js/comparison.js
+  80f0781738e9bc7e 1-350
+css/comparison.css
+  80f0781738e9bc7e 1-269
+js/main.js
+  80f0781738e9bc7e 2-16
+index.html
+  h_408562fb15bd2c 29,49,63,66,68-69,71-72,79,82-83,98,100-101,155,166,175-176,181-183,185,194,199-200,202-203,206-210,216-217,224-225,228,238
+  80f0781738e9bc7e 15-16,21,73,105-106,108-109,111-114,116-120,122-126,129,131-134,137,140,145,150,211,213-215
+  8173e3f899acfb7b 28
+js/generation.js
+  h_408562fb15bd2c 3-6,11-13,18-22
+  80f0781738e9bc7e 25-26,53-54,81-88,90-94,96-109,111-115,117-118
+  8173e3f899acfb7b 27-50,55-69,89,95,110,116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "64e753d508c87f313a11212cc429d8a316a8d050",
+  "prompts": {
+    "80f0781738e9bc7e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6ee6ba2a-1392-4cbc-ba16-273261af548c",
+        "model": "composer-2.5"
+      },
+      "human_author": "insta360",
+      "messages": [],
+      "total_additions": 1320,
+      "total_deletions": 429,
+      "accepted_lines": 879,
+      "overriden_lines": 12
+    },
+    "8173e3f899acfb7b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "04ff0ea1-0498-460d-910f-d75026eebb07",
+        "model": "composer-2.5"
+      },
+      "human_author": "insta360",
+      "messages": [],
+      "total_additions": 90,
+      "total_deletions": 108,
+      "accepted_lines": 45,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_408562fb15bd2c": {
+      "author": "songmx"
+    }
+  }
+}
