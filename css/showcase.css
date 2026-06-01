@@ -10,7 +10,7 @@
 .showcase-dual-card {
     width: 100%;
     max-width: none;
-    margin: 8px 0;
+    margin: 16px 0;
     padding: 12px;
     box-sizing: border-box;
 }
@@ -93,10 +93,19 @@
     object-position: center;
 }
 
+#orbit-compare-carousel.cmp-pano-carousel {
+    margin-bottom: 24px;
+}
+
+#main > .showcase-caption-card.cmp-showcase-footnote {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
 .showcase-caption-card {
     width: 100%;
     max-width: none;
-    margin: 8px auto 24px;
+    margin: 16px auto 48px;
     padding: 16px 20px;
     box-sizing: border-box;
     font-size: 16px;
