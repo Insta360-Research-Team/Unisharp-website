@@ -58,6 +58,9 @@ function carousel_render(carousel_id) {
             item.innerHTML = "";
         }
     }
+    if (typeof schedule_qual_eval_layout === 'function' && carousel_id.indexOf('compare-') === 0) {
+        schedule_qual_eval_layout();
+    }
 }
 
 
