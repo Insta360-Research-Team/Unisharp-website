@@ -1,25 +1,23 @@
-// Comparison on outdoor scenes (01-06)
-var outdoor_items = [
-    { image: "website_01.png" },
-    { image: "website_02.png" },
-    { image: "website_03.png" },
-    { image: "website_04.png" },
+// Qualitative evaluation — three camera columns (assets/compare)
+var compare_perspective_items = [
+    { image: "website_new_01.png" },
+    { image: "website_new_04.png" },
+    { image: "website_new_07.png" },
+    { image: "website_new_10.png" },
 ];
 
-// Comparison on indoor scenes (07-08)
-var indoor_items = [
-    { image: "website_05.png" },
-    { image: "website_06.png" },
-    { image: "website_07.png" },
+var compare_panoramic_items = [
+    { image: "website_new_02.png" },
+    { image: "website_new_05.png" },
+    { image: "website_new_08.png" },
 ];
 
-// Comparison on Fine-grained Details (09-11)
-var details_items = [
-    { image: "website_08.png" },
-    { image: "website_09.png" },
-    { image: "website_10.png" },
-    { image: "website_11.png" },
-    { image: "website_12.png" },
+var compare_fisheye_items = [
+    { image: "website_new_03.png" },
+    { image: "website_new_06.png" },
+    { image: "website_new_09.png" },
+    { image: "website_new_11.png" },
+    { image: "website_new_12.png" },
 ];
 
 // Panorama showcase: ERP (left) + cubemap (right)
@@ -53,10 +51,10 @@ var forward_backward_items = [
 // UniSHARP vs SHARP orbit panorama (first 3 slides moved to the end)
 var orbit_compare_items = [
     { ours: "AI_vol3_03_first_orbit_erp.gif", sharp: "AI_vol3_03_first.gif" },
-    { ours: "AI_vol3_04_first_orbit_erp.gif", sharp: "AI_vol3_04_first.gif" },
     { ours: "AI_vol3_04_last_orbit_erp.gif", sharp: "AI_vol3_04_last.gif" },
     { ours: "AI_vol4_02_last_orbit_erp.gif", sharp: "AI_vol4_02_last.gif" },
     { ours: "AI_vol4_02_middle_orbit_erp.gif", sharp: "AI_vol4_02_middle.gif" },
+    { ours: "AI_vol3_04_first_orbit_erp.gif", sharp: "AI_vol3_04_first.gif" },
     { ours: "AI_vol4_02_random_orbit_erp.gif", sharp: "AI_vol4_02_random.gif" },
     { ours: "AI_vol4_03_last_orbit_erp.gif", sharp: "AI_vol4_03_last.gif" },
     { ours: "AI_vol4_03_middle_orbit_erp.gif", sharp: "AI_vol4_03_middle.gif" },
@@ -99,12 +97,10 @@ function omnirooms_scene_template(item, info) {
     `;
 }
 
-function carousel_item_template(item, info) {
+function compare_column_template(item, info) {
     return `
-        <div class="x-card" style="min-width: 300px; max-width: 900px; margin: 10px auto;">
-            <div style="width: 100%; text-align: center;">
-                <img src="assets/${item.image}" alt="" style="width: 100%; height: auto; border-radius: 8px;">
-            </div>
+        <div class="compare-column-slide">
+            <img src="assets/compare/${item.image}" alt="Comparison result" loading="lazy">
         </div>
     `;
 }
@@ -132,17 +128,17 @@ function forward_backward_template(item, info) {
 
 function orbit_compare_template(item, info) {
     return `
-        <div class="x-card showcase-dual-card">
+        <div class="x-card showcase-dual-card showcase-orbit-card">
             <div class="showcase-dual-row showcase-dual-row--orbit">
-                <div class="showcase-panel showcase-panel--half">
+                <div class="showcase-panel showcase-panel--orbit">
                     <span class="showcase-panel-label">UniSHARP</span>
-                    <div class="showcase-panel-media showcase-panel-media--synced">
+                    <div class="showcase-panel-media showcase-panel-media--orbit">
                         <img src="assets/ours_orbit/${item.ours}" alt="UniSHARP orbit panorama" loading="lazy">
                     </div>
                 </div>
-                <div class="showcase-panel showcase-panel--half">
+                <div class="showcase-panel showcase-panel--orbit">
                     <span class="showcase-panel-label">SHARP</span>
-                    <div class="showcase-panel-media showcase-panel-media--synced">
+                    <div class="showcase-panel-media showcase-panel-media--orbit">
                         <img src="assets/sharp_orbit/${item.sharp}" alt="SHARP orbit panorama" loading="lazy">
                     </div>
                 </div>
