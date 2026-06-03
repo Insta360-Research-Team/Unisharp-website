@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>UniSHARP: Universal Sharp Monocular View Synthesis</title>
+        <title>Depth Any Panoramas: A Foundation Model for Panoramic Depth Estimation</title>
         <link rel="icon" href="favicon.png">
         <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css">
         <link rel="stylesheet" href="fonts/segoe-print/stylesheet.css">
@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="css/comparison.css?v=20260530">
         <link rel="stylesheet" href="css/showcase.css?v=20260531c">
         <script src="js/carousel.js"></script>
+        <script src="js/qual_eval_compare.js"></script>
         <script src="js/selection_panel.js"></script>
         <script src="js/generation.js"></script>
         <script src="js/application.js"></script>
@@ -26,7 +27,7 @@
         <div id="hero-section">
             <!-- 视频背景 -->
             <video id="hero-video" autoplay muted playsinline loop>
-                <source src="assets/teaser8.mp4" type="video/mp4">
+                <source src="assets/teaser.mp4" type="video/mp4">
             </video>
             
             <!-- 半透明遮罩层 -->
@@ -65,13 +66,27 @@
                 </div>
 
                 <div id="authors">
-                    <span class="author-item"><a class="link" href="">Meixi Song</a><sup>1</sup></span>
-                    <span class="author-item"><a class="link" href="">Dizhe Zhang</a><sup>1</sup></span>
-                    <span class="author-item"><a class="link" href="">Hao Ren</a><sup>1</sup></span>
-                    <span class="author-item"><a class="link" href="">Ruiyang Zhang</a><sup>1</sup></span>
-                    <span class="author-item"><a class="link" href="">Bo Du</a><sup>2</sup></span>
-                    <span class="author-item"><a class="link" href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>3</sup></span>
-                    <span class="author-item"><a class="link" href="https://scholar.google.com.hk/citations?user=SSI90d4AAAAJ&hl=en&oi=ao">Lu Qi</a><sup>1,2,*</sup></span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="">Meixi Song</a><sup class="author-sup">1</sup></span>
+                    </span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="">Dizhe Zhang</a><sup class="author-sup">1<span class="author-mail" aria-label="Email"><svg class="author-mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span></sup></span>
+                    </span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="">Hao Ren</a><sup class="author-sup">1</sup></span>
+                    </span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="">Ruiyang Zhang</a><sup class="author-sup">1</sup></span>
+                    </span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="">Bo Du</a><sup class="author-sup">2</sup></span>
+                    </span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup class="author-sup">3</sup></span>
+                    </span>
+                    <span class="author-item">
+                        <span class="author-name-wrap"><a class="link" href="https://scholar.google.com.hk/citations?user=SSI90d4AAAAJ&hl=en&oi=ao">Lu Qi</a><sup class="author-sup">1,2<span class="author-mail" aria-label="Email"><svg class="author-mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span></sup></span>
+                    </span>
                 </div>
                 <div id="institution">
                     <div><sup>1</sup><a class="link" href="https://www.insta360.com/cn/">Insta360 Research</a></div>
@@ -95,7 +110,7 @@
         
         <div id="main">
             <div id="teaser">
-                <div style="width: 100%;"><img src="assets/website_13.png" alt="Depth Teaser" style="width: 100%; height: auto;"></div>
+                <div style="width: 100%;"><img src="assets/teaser.png" alt="Depth Teaser" style="width: 100%; height: auto;"></div>
                 <div class="teaser-caption">
                     <strong>UniSHARP performs monocular novel view synthesis across diverse camera types.</strong>
                     Given a single image from a perspective, wide-FoV, fisheye, or panoramic camera, UniSHARP predicts a 3D Gaussian point cloud and renders high-quality novel views.
@@ -116,8 +131,25 @@
             <div id="title-panoramic-camera" class="x-section-title small section-title-compact-top">
                 <div><span class="x-gradient-font">Panoramic Camera</span></div>
             </div>
-            <div id="pano-method-tabs" class="cmp-method-tabs cmp-global-tabs"></div>
-            <div id="pano-comparison" class="cmp-pano-carousel"></div>
+            <div class="dynamic-pano-card x-card">
+                <div class="dynamic-pano-grid">
+                    <div class="dynamic-pano-main-tabs">
+                        <div id="pano-method-tabs" class="cmp-method-tabs cmp-global-tabs"></div>
+                    </div>
+                    <div class="dynamic-pano-orbit-header">
+                        <div class="cmp-method-tabs cmp-orbit-method-label">
+                            <span class="cmp-method-tab active">SHARP</span>
+                        </div>
+                        <p class="cmp-orbit-note">Run inference on each of the six cubemap faces separately and stitch the outputs into one equirectangular panorama</p>
+                    </div>
+                    <div class="dynamic-pano-main">
+                        <div id="pano-comparison" class="cmp-pano-carousel"></div>
+                    </div>
+                    <div class="dynamic-pano-orbit">
+                        <div id="orbit-compare-carousel" class="cmp-pano-carousel"></div>
+                    </div>
+                </div>
+            </div>
 
             <div class="x-section-title small">
                 <div><span class="x-gradient-font">Perspective Camera</span></div>
@@ -125,35 +157,28 @@
             <div id="pers-method-tabs" class="cmp-method-tabs cmp-global-tabs"></div>
             <div id="pers-comparison-grid" class="cmp-pers-grid"></div>
 
-            <div class="x-section-title small">
-                <div><span class="x-gradient-font">UniSHARP vs. SHARP — Orbit Panorama</span></div>
-            </div>
-            <div id="orbit-compare-carousel" class="cmp-pano-carousel"></div>
-            <div class="showcase-caption-card x-card cmp-showcase-footnote">
-                <strong>UniSHARP vs. SHARP on orbit panoramas.</strong>
-                For SHARP, we run inference on each of the six cubemap faces separately and stitch the outputs into one equirectangular panorama; visible stitching seams remain.
-            </div>
-
             <div class="x-section-title"><div class="x-gradient-font">Qualitative Evaluation</div></div>
 
-            <div class="x-section-title small section-title-compact-top">
-                <div>Comparison On <span class="x-gradient-font">Perspective Camera</span></div>
+            <div id="qual-eval-compare" class="qual-eval-compare x-card">
+                <div class="qual-eval-compare-grid">
+                    <div class="qual-eval-compare-col">
+                        <div class="qual-eval-compare-col-title"><span class="x-gradient-font">Perspective</span></div>
+                        <div id="compare-perspective-carousel" class="qual-eval-compare-carousel"></div>
+                    </div>
+                    <div class="qual-eval-compare-col">
+                        <div class="qual-eval-compare-col-title"><span class="x-gradient-font">Panoramic</span></div>
+                        <div id="compare-panoramic-carousel" class="qual-eval-compare-carousel"></div>
+                    </div>
+                    <div class="qual-eval-compare-col">
+                        <div class="qual-eval-compare-col-title"><span class="x-gradient-font">Fisheye</span></div>
+                        <div id="compare-fisheye-carousel" class="qual-eval-compare-carousel"></div>
+                    </div>
+                </div>
             </div>
-            <div id="outdoor-carousel"></div>
 
-            <div class="x-section-title small">
-                <div>Comparison On <span class="x-gradient-font">Panoramic Camera</span></div>
-            </div>
-            <div id="indoor-carousel"></div>
-
-            <div class="x-section-title small">
-                <div>Comparison On <span class="x-gradient-font">Fisheye Camera</span></div>
-            </div>
-            <div id="details-carousel"></div>
-
-            <div id="abstract" class="x-gradient-block">
+            <!-- <div id="abstract" class="x-gradient-block">
                 In this work, we focus on extending SHARP, the popular photorealistic view synthesis method, for universal monocular rendering across diverse camera systems, such as large-field-of-view fisheye lenses. To overcome the pinhole-specific assumptions of SHARP, our key idea is to align various images in a unified omnidirectional latent space. Thus, we propose UniSHARP, which performs implicit alignment in both feature and Gaussian spaces. Specifically, 2D semantic embeddings and 3D spatial features are jointly encoded and decoded by UniK3D to support Gaussian construction, while a ray-based universal representation organizes Gaussian primitives along rays and radial distances. To comprehensively evaluate our method, we construct a benchmark covering diverse imaging systems, including pinhole, fisheye and panoramic cameras, across various scenes. The benchmark is further stratified by field of view, spanning narrow perspective, wide-FoV, fisheye, and full panoramic settings. Extensive experiments on the proposed benchmark demonstrate the effectiveness of UniSHARP, outperforming alternative methods by a large margin. 
-            </div>
+            </div> -->
 
 
             <div class="x-section-title">
@@ -163,7 +188,7 @@
             <div class="main-figure-wrap">
                 <div class="x-card">
                     <div style="width: 100%; text-align: center;">
-                        <img src="assets/website_14.png" alt="" style="width: 100%; height: auto; border-radius: 8px;">
+                        <img src="assets/unisharp.png" alt="" style="width: 100%; height: auto; border-radius: 8px;">
                     </div>
                     <div style="
                         width: 100%;
@@ -182,7 +207,7 @@
             <div class="main-figure-wrap">
                 <div class="x-card">
                     <div style="width: 100%; text-align: center;">
-                        <img src="assets/NIPS2026_new_01.png" alt="" style="width: 80%; height: auto; border-radius: 8px;">
+                        <img src="assets/benchmark.png" alt="" style="width: 80%; height: auto; border-radius: 8px;">
                     </div>
                     <div style="
                         width: 100%;
@@ -204,7 +229,7 @@
                 We restrict target views to locally reachable positions: source&ndash;target overlap &gt; 60%, camera-center distance &lt; 0.5 m, and image-index gap &lt; 10.
                 This focuses evaluation on geometry and disocclusion under meaningful motion rather than unconstrained long-range hallucination.
                 The protocol is a unified testbed for universal-camera NVS, measuring how rendering quality scales across perspective, wide-FoV, fisheye, and 360&deg; projections.
-                We use a single-source, multi-target setting&mdash;the first frame of each sequence as the source and the next ten frames as targets&mdash;and report PSNR, SSIM, and LPIPS averaged over all valid target views.
+                We use a single-source, multi-target setting&mdash;the first frame of each sequence as the source and the next ten frames as targets.
             </div>
             
             <div class="x-section-title small section-title-compact-top">
